@@ -13,17 +13,17 @@ import java.io.Serializable;
  */
 public class Empresas implements Serializable{
 
-    long idempresa;
-    String empresa;
-    TipoEmpresa tipoempresa;
-    String rnc;
-    Moneda moneda;
-    String direccion;
-    String telefono1;
-    String telefono2;
-    String fax;
-    String email;
-    String slogan;
+    private long idempresa;
+    private String empresa;
+    private TipoEmpresa tipoempresa;
+    private String rnc;
+    private Moneda moneda;
+    private String direccion;
+    private String telefono1;
+    private String telefono2;
+    private String fax;
+    private String email;
+    private String slogan;
 
     public Empresas() {
     }

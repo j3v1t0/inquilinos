@@ -15,8 +15,8 @@ import java.util.Set;
  */
 public class TipoEmpresa implements Serializable{
 
-    String idtipoempresa;
-    String tipoempresa;
+    private String idtipoempresa;
+    private String tipoempresa;
     private Set empresa = new HashSet(0);
 
     public TipoEmpresa() {
