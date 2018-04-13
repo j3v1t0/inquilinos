@@ -45,7 +45,7 @@ public class empresaBean {
         empresa = new Empresas();
     }
 
-    public void nuevoCliente() {
+    public void nuevoEmpresa() {
         empresaDao eDao = new empresaDaoImp();
         eDao.newEmpresas(empresa);
     }

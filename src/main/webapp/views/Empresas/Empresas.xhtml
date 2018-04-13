@@ -78,7 +78,7 @@
                         <p:panelGrid columns="2" style="margin: 0 auto;">
 
                             <p:outputLabel value="Nombre de Empresa" style=" font-weight:bold"/>
-                            <p:inputText value="" a:placeholder="Ingrese el nombre"/>
+                            <p:inputText value="#{empresaBean.empresa.empresa}" a:placeholder="Ingrese el nombre"/>
 
                             <p:outputLabel value="Tipo de Empresa" style="font-weight:bold"/>
                             <p:selectOneMenu value="#{tipoempresaBean.listatipoempresa}">
@@ -87,34 +87,35 @@
 
 
                             <p:outputLabel value="RNC" style="font-weight:bold"/>
-                            <p:inputText value="" a:placeholder="Ingrese el RNC "/> 
+                            <p:inputText value="#{empresaBean.empresa.rnc}" a:placeholder="Ingrese el RNC "/> 
 
                             <p:outputLabel value="Moneda" style="font-weight:bold"/>
-                            <p:selectOneMenu value="">
-                                <f:selectItem itemLabel="Dolar" itemValue="Dolar"/>
-                                <f:selectItem itemLabel="Peso Dominicano" itemValue="Peso Dominicano"/>
-                                <f:selectItem itemLabel="Peso Haitiano" itemValue="Peso Haitiano"/>
+                            <p:selectOneMenu value="#{monedaBean.listaMoneda}">
+                                <f:selectItems value="#{monedaBean.listaMoneda}"/>
                             </p:selectOneMenu>
 
                             <p:outputLabel value="Telefono 1" style="font-weight:bold"/>
-                            <p:inputText value="" a:placeholder="Ingrese el numero de telefono 1"/> 
+                            <p:inputText value="#{empresaBean.empresa.telefono1}" a:placeholder="Ingrese el numero de telefono 1"/> 
                             <p:outputLabel value="Telefono 2" style="font-weight:bold"/>
-                            <p:inputText value="" a:placeholder="Ingrese el numero de telefono 2"/> 
-                            <p:outputLabel value="Direccion" style="font-weight:bold"/>
-                            <p:inputText value="" a:placeholder="Ingrese la direccion"/> 
-
+                            <p:inputText value="#{empresaBean.empresa.telefono2}" a:placeholder="Ingrese el numero de telefono 2"/> 
                             <p:outputLabel value="Fax" style="font-weight:bold"/>
-                            <p:inputText value="" a:placeholder="Ingrese el Fax" />
+                            <p:inputText value="#{empresaBean.empresa.fax}" a:placeholder="Ingrese el Fax"/> 
+
+                            <p:outputLabel value="Direccion" style="font-weight:bold"/>
+                            <p:inputText value="#{empresaBean.empresa.direccion}" a:placeholder="Ingrese la direccion" />
 
                             <p:outputLabel value="Email" style="font-weight:bold"/>
-                            <p:inputText value="" a:placeholder="Ingrese el Email"/> 
+                            <p:inputText value="#{empresaBean.empresa.email}" a:placeholder="Ingrese el Email"/> 
 
-                            <p:outputLabel value="S-Logan" style="font-weight:bold"/>
+                            <p:outputLabel value="Slogan" style="font-weight:bold"/>
+                            <p:inputText value="#{empresaBean.empresa.slogan}" a:placeholder="Slogan de la empresa"/> 
+
+                            <p:outputLabel value="Logo" style="font-weight:bold"/>
                             <p:fileUpload value="" mode="simple" skinSimple="false"/>
                         </p:panelGrid>
 
                         <p:commandButton value="Guardar" 
-                                         update="formMostrarEmpresa:tablaEmpresas" oncomplete="PF('dialogNuevoEmpresa').hide();"/>
+                                         update="formMostrarEmpresa:tablaEmpresas" actionListener="#{empresaBean.nuevoEmpresa()}" oncomplete="PF('dialogNuevoEmpresa').hide();"/>
                         <p:commandButton value="Cancelar"  onclick="PF('dialogNuevoEmpresa').hide();"/>
 
                     </p:dialog>
