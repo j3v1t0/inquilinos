@@ -1,0 +1,273 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <body>
+
+        <ui:composition template="./../../plantilla/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h2 style="text-align: center;">Datos Clientes</h2>
+              
+                
+                <h:form>
+                    <p:panelGrid columns="3" >
+                            
+                            
+                        </p:panelGrid>
+                    <p:commandButton value="Agregar Cliente" 
+                                     oncomplete="PF('dialogNuevoCliente').show();" update=":formNuevoCliente"/>
+                </h:form>
+                <h:form id="formMostrarCliente">
+                    <p:dataTable id="tablaClientes" paginator="true" paginatorPosition="top" 
+                                 var="ct" value="" emptyMessage="No hay Datos del Cliente">
+
+                        <p:column headerText="Codigo">
+                            <h:outputText value=""/>
+                        </p:column>
+                        <p:column headerText="Nombre">
+                            <h:outputText value=""/>
+                        </p:column>
+                        <p:column headerText="Direccion">
+                            <h:outputText value=""/>
+                        </p:column>
+                        
+                         <p:column headerText="Ver Datos Clientes">
+                            <p:commandButton value="Ver Cliente" oncomplete="PF('dialogDatosClientes').show();"
+                                             update="">
+                                <f:setPropertyActionListener target="" value=""/>              
+
+                            </p:commandButton>
+                        </p:column>
+
+                        <p:column headerText="Opciones">
+                            <p:commandButton  value="Modificar" style=" margin: 2px;" oncomplete="PF('dialogModificarCliente').show();"
+                                              update="formModificarCliente">
+
+                                <f:setPropertyActionListener target="" value=""/>
+                            </p:commandButton>
+
+                            <p:commandButton value="Eliminar" style=" margin: 1px;" oncomplete="PF('dialogEliminarCliente').show();"
+                                             update="formEliminarCliente">
+                                <f:setPropertyActionListener target="" value=""/>              
+
+                            </p:commandButton>
+
+
+                        </p:column>
+                       
+                    </p:dataTable>
+
+                </h:form>
+                <h:form id="formNuevoCliente">
+
+                    <p:dialog id="dlgNuevoCliente" widgetVar="dialogNuevoCliente" resizable="false" showEffect="explode" 
+                              hideEffect="explode" modal="true">
+                        
+                            <h3 style="text-align: center;"> Agregar Cliente</h3>
+                        
+                        <p:panelGrid columns="2" style="margin: 0 auto;">
+                                
+                            <p:outputLabel value="Nombres" style=" font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el nombre"/>
+
+                            <p:outputLabel value="Apellidos" style=" font-weight:bold" />
+                            <p:inputText value="" a:placeholder="Ingrese el apellido"/>
+
+                            <p:outputLabel value="Tipo de Identificacion" style="font-weight:bold"/>
+                            <p:selectOneMenu value="">
+                                <f:selectItem itemLabel="Ninguno" itemValue="Ninguno"/>
+                                <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte"/>
+                                <f:selectItem itemLabel="Cedula" itemValue="Cedula"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Documento de identificacion" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el documento "/> 
+
+                          
+                            <p:outputLabel value="Direccion" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese la direccion"/>   
+
+                            <p:outputLabel value="Sexo" style="font-weight:bold"/>
+                            <p:selectOneMenu value="">
+                                <f:selectItem itemLabel="Femenino" itemValue="Femenino"/>
+                                <f:selectItem itemLabel="Masculino" itemValue="Masculino"/>  
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Nacionalidad" style="font-weight:bold"/>
+                            <p:selectOneMenu value="">
+                                <f:selectItem itemLabel="Nombre de la Nacionalidad" itemValue="Nombre de la Nacionalidad"/>
+                                <f:selectItem itemLabel="Nombre de la Nacionalidad" itemValue="Nombre de la Nacionalidad"/>
+                                <f:selectItem itemLabel="Nombre de la Nacionalidad" itemValue="Nombre de la Nacionalidad"/>
+                                <f:selectItem itemLabel="Nombre de la Nacionalidad" itemValue="Nombre de la Nacionalidad"/>
+                                <f:selectItem itemLabel="Nombre de la Nacionalidad" itemValue="Nombre de la Nacionalidad"/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Telefono" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el numero de telefono"/> 
+
+                            <p:outputLabel value="Celular" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el celular" />
+
+                            <p:outputLabel value="Email" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el Email"/> 
+
+                            <p:outputLabel value="Fecha de Nacimiento" style="font-weight:bold"/>
+                            <p:calendar id="fechanacimiento" value=""  a:placeholder="Ingrese la fecha "  mask="true" locale="de" navigator="true" pattern="dd-MM-yyyy" />
+
+                            <p:outputLabel value="Estado Civil" style="font-weight:bold"/>
+                            <p:selectOneMenu value="">
+                                <f:selectItem itemLabel="Divociado/a" itemValue="Divociado/a"/>
+                                <f:selectItem itemLabel="Casado/a" itemValue="Casado/a"/>
+                                <f:selectItem itemLabel="Soltero/a" itemValue="Soltero/a"/> 
+                            </p:selectOneMenu>
+
+                        </p:panelGrid>
+                        
+                            <p:commandButton value="Guardar" 
+                                             update="formMostrarCliente:tablaClientes" oncomplete="PF('dialogNuevoCliente').hide();"/>
+                            <p:commandButton value="Cancelar"  onclick="PF('dialogNuevoCliente').hide();"/>
+                        
+                    </p:dialog>
+
+                </h:form>
+
+                <h:form id="formModificarCliente">
+
+                    <p:dialog id="dlgModificarCliente" widgetVar="dialogModificarCliente" resizable="false" showEffect="explode" 
+                              hideEffect="explode" modal="true">
+                        <h3 style="text-align: center;"> Modificar Cliente</h3>
+                       <p:panelGrid columns="2" style="margin: 0 auto;">
+                           
+                            <p:outputLabel value="Nombres" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el nombre"/>
+
+                            <p:outputLabel value="Apellidos" style="font-weight:bold" />
+                            <p:inputText value="" a:placeholder="Ingrese el apellido"/>
+
+                            <p:outputLabel value="Tipo de Identificacion" style="font-weight:bold"/>
+                            <p:selectOneMenu value="">
+                                <f:selectItem itemLabel="Ninguno" itemValue="Ninguno"/>
+                                <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte"/> 
+                                <f:selectItem itemLabel="Cedula" itemValue="Cedula"/>  
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Documento de identificacion" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el documento "/> 
+
+                          
+                            <p:outputLabel value="Direccion" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese la direccion" />   
+
+                            <p:outputLabel value="Sexo" style="font-weight:bold"/>
+                            <p:selectOneMenu value="">
+                                <f:selectItem itemLabel="Femenino" itemValue="Femenino"/>
+                                <f:selectItem itemLabel="Masculino" itemValue="Masculino"/> 
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Nacionalidad" style="font-weight:bold"/>
+                            <p:selectOneMenu value="">
+                                <f:selectItem itemLabel="Nombre de la Nacionalidad" itemValue="Nombre de la Nacionalidad"/>
+                                <f:selectItem itemLabel="Nombre de la Nacionalidad" itemValue="Nombre de la Nacionalidad"/>
+                                <f:selectItem itemLabel="Nombre de la Nacionalidad" itemValue="Nombre de la Nacionalidad"/>
+                                <f:selectItem itemLabel="Nombre de la Nacionalidad" itemValue="Nombre de la Nacionalidad"/>
+                                <f:selectItem itemLabel="Nombre de la Nacionalidad" itemValue="Nombre de la Nacionalidad"/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Telefono" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el numero de telefono"/> 
+
+                            <p:outputLabel value="Celular" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el celular" />
+
+                            <p:outputLabel value="Email" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el Email"/> 
+
+                            <p:outputLabel value="Fecha de Nacimiento" style="font-weight:bold"/>
+                            <p:calendar id="fechanacimiento" value=""  a:placeholder="Ingrese la fecha "  mask="true" locale="de" navigator="true" pattern="dd-MM-yyyy" />
+
+                            <p:outputLabel value="Estado Civil" style="font-weight:bold"/>
+                            <p:selectOneMenu value="">
+                                <f:selectItem itemLabel="Divociado/a" itemValue="Divociado/a"/>
+                                <f:selectItem itemLabel="Casado/a" itemValue="Casado/a"/>
+                                <f:selectItem itemLabel="Soltero/a" itemValue="Soltero/a"/>
+                            </p:selectOneMenu>
+
+                        </p:panelGrid>
+
+                        
+                        <p:commandButton value="Guardar" 
+                                         update="formMostrarCliente:tablaClientes" oncomplete="PF('dialogModificarCliente').hide();"/>
+                        <p:commandButton value="Cancelar"  onclick="PF('dialogModificarCliente').hide();"/>
+                    </p:dialog>
+                </h:form>
+
+                <h:form id="formEliminarCliente">
+
+                    <p:dialog id="dlgEliminarCliente" widgetVar="dialogEliminarCliente" resizable="false" showEffect="explode" 
+                              hideEffect="explode" modal="true">
+                        <h:outputText value="Desea eliminar este registro?"/>
+                        <p:commandButton value="SI"
+                                         update="formMostrarCliente:tablaClientes" onclick="PF('dialogEliminarCliente').hide();"/>
+                        <p:commandButton value="Cancelar"  onclick="PF('dialogEliminarCliente').hide();"/>
+                    </p:dialog>
+                </h:form>
+                <h:form id="formVerDatosCientes"> 
+                    <p:dialog id="dlgDatosClientes" widgetVar="dialogDatosClientes" resizable="true" showEffect="explode"
+                              hideEffect="explode" modal="true">
+                        <h3 style="text-align: center">Datos Personales</h3>
+                        <p:panelGrid columns="2" style="margin: 0 auto;">
+
+                            <p:outputLabel style="font-weight:bold" value="Nombres"/>
+                            <p:outputLabel value="Jose Alfredo"/>
+
+                            <p:outputLabel style="font-weight:bold" value="Apellidos" />
+                           <p:outputLabel value="De La Cruz Asencio"/>
+
+                            <p:outputLabel  style="font-weight:bold" value="Tipo de Identificacion"/>
+                            <p:outputLabel value="Cedula"/>
+                            
+                            <p:outputLabel style="font-weight:bold" value="Documento de identificacion"/>
+                              <p:outputLabel value="402-1499861-5"/>
+
+                          
+                            <p:outputLabel  style="font-weight:bold" value="Direccion"/>
+                             <p:outputLabel value="Carretera mella, Km 7/5"/>  
+
+                            <p:outputLabel  style="font-weight:bold" value="Sexo"/>
+                             <p:outputLabel value="Masculino"/>
+
+                            <p:outputLabel style="font-weight:bold" value="Nacionalidad"/>
+                            <p:outputLabel value="Dominicano"/>
+
+                            <p:outputLabel  value="Telefono" style="font-weight:bold"/>
+                            <p:outputLabel value="8299437376"/>
+
+                            <p:outputLabel  value="Celular" style="font-weight:bold"/>
+                            <p:outputLabel  value="8299437376"/>
+
+                            <p:outputLabel  value="Email" style="font-weight:bold"/>
+                            <p:outputLabel value="josealfredodelacruz181097@g.com"/>
+
+                            <p:outputLabel value="Fecha de Nacimiento" style="font-weight:bold"/>
+                            <p:outputLabel value="18/10/1997"/>
+
+                            <p:outputLabel value="Estado Civil" style="font-weight:bold"/>
+                            <p:outputLabel value="Soltero"/>
+
+                        </p:panelGrid>
+
+
+
+                    </p:dialog>
+
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

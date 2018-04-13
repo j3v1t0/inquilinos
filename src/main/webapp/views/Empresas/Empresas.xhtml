@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <body>
+
+        <ui:composition template="./../../plantilla/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h2 style="text-align: center;">Empresas</h2>
+
+
+                <h:form>
+                    <p:panelGrid columns="3" >
+
+
+                    </p:panelGrid>
+                    <p:commandButton value="Agregar Empresa" actionListener="#{empresaBean.prepararNuevoEmpresa()}"
+                                     oncomplete="PF('dialogNuevoEmpresa').show();" update=":formNuevoEmpresa"/>
+                </h:form>
+                <h:form id="formMostrarEmpresa">
+                    <p:dataTable id="ẗablaClientes" paginator="true" paginatorPosition="top" var="em" value="#{empresaBean.listaEmpresas}" emptyMessage="No hay datos de clientes">
+
+                        <p:column headerText="Codigo">
+                            <h:outputText value=""/>
+                        </p:column>
+                        <p:column headerText="Nombre">
+                            <h:outputText value=""/>
+                        </p:column>
+                        <p:column headerText="Direccion">
+                            <h:outputText value=""/>
+                        </p:column>
+
+                        <p:column headerText="Datos Empresas">
+                            <p:commandButton value="Ver Empresa" oncomplete="PF('dialogDatosEmpresas').show();"
+                                             update="">
+                                <f:setPropertyActionListener target="" value=""/>              
+
+                            </p:commandButton>
+                        </p:column>
+
+                        <p:column headerText="Opciones">
+                            <p:commandButton  value="Modificar" style=" margin: 2px;" oncomplete="PF('dialogModificarEmpresa').show();"
+                                              update="formModificarEmpresa">
+
+                                <f:setPropertyActionListener target="" value=""/>
+                            </p:commandButton>
+
+                            <p:commandButton value="Eliminar" style=" margin: 1px;" oncomplete="PF('dialogEliminarEmpresa').show();"
+                                             update="formEliminarEmpresa">
+                                <f:setPropertyActionListener target="" value=""/>              
+
+                            </p:commandButton>
+
+
+                        </p:column>
+
+                    </p:dataTable>
+
+                </h:form>
+                <h:form id="formNuevoEmpresa">
+
+                    <p:dialog id="dlgNuevoEmpresa" widgetVar="dialogNuevoEmpresa" resizable="false" showEffect="explode" 
+                              hideEffect="explode" modal="true">
+
+                        <h3 style="text-align: center;"> Agregar Empresa</h3>
+
+                        <p:panelGrid columns="2" style="margin: 0 auto;">
+
+                            <p:outputLabel value="Nombre de Empresa" style=" font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el nombre"/>
+
+                            <p:outputLabel value="Tipo de Empresa" style="font-weight:bold"/>
+                            <p:selectOneMenu value="">
+                                <f:selectItem itemLabel="Gubernalemntal" itemValue="Gubernalemntal"/>
+                                <f:selectItem itemLabel="Privada" itemValue="Privada"/>
+                                <f:selectItem itemLabel="Semi-Privada" itemValue="Semi-Privada"/>
+                            </p:selectOneMenu>
+
+
+                            <p:outputLabel value="RNC" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el RNC "/> 
+
+                            <p:outputLabel value="Moneda" style="font-weight:bold"/>
+                            <p:selectOneMenu value="">
+                                <f:selectItem itemLabel="Dolar" itemValue="Dolar"/>
+                                <f:selectItem itemLabel="Peso Dominicano" itemValue="Peso Dominicano"/>
+                                <f:selectItem itemLabel="Peso Haitiano" itemValue="Peso Haitiano"/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Telefono 1" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el numero de telefono 1"/> 
+                            <p:outputLabel value="Telefono 2" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el numero de telefono 2"/> 
+                            <p:outputLabel value="Direccion" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese la direccion"/> 
+
+                            <p:outputLabel value="Fax" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el Fax" />
+
+                            <p:outputLabel value="Email" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el Email"/> 
+
+                            <p:outputLabel value="S-Logan" style="font-weight:bold"/>
+                            <p:fileUpload value="" mode="simple" skinSimple="false"/>
+                        </p:panelGrid>
+
+                        <p:commandButton value="Guardar" 
+                                         update="formMostrarEmpresa:tablaEmpresas" oncomplete="PF('dialogNuevoEmpresa').hide();"/>
+                        <p:commandButton value="Cancelar"  onclick="PF('dialogNuevoEmpresa').hide();"/>
+
+                    </p:dialog>
+
+                </h:form>
+
+                <h:form id="formModificarEmpresa">
+
+                    <p:dialog id="dlgModificarEmpresa" widgetVar="dialogModificarEmpresa" resizable="false" showEffect="explode" 
+                              hideEffect="explode" modal="true">
+                        <h3 style="text-align: center;"> Modificar Empresas</h3>
+
+                        <p:panelGrid columns="2" style="margin: 0 auto;">
+
+                            <p:outputLabel value="Nombre de Empresa" style=" font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el nombre"/>
+
+                            <p:outputLabel value="Tipo de Empresa" style="font-weight:bold"/>
+                            <p:selectOneMenu value="">
+                                <f:selectItem itemLabel="Gubernalemntal" itemValue="Gubernalemntal"/>
+                                <f:selectItem itemLabel="Privada" itemValue="Privada"/>
+                                <f:selectItem itemLabel="Semi-Privada" itemValue="Semi-Privada"/>
+                            </p:selectOneMenu>
+
+
+                            <p:outputLabel value="RNC" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el RNC "/> 
+
+                            <p:outputLabel value="Moneda" style="font-weight:bold"/>
+                            <p:selectOneMenu value="">
+                                <f:selectItem itemLabel="Dolar" itemValue="Dolar"/>
+                                <f:selectItem itemLabel="Peso Dominicano" itemValue="Peso Dominicano"/>
+                                <f:selectItem itemLabel="Peso Haitiano" itemValue="Peso Haitiano"/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Telefono 1" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el numero de telefono 1"/> 
+                            <p:outputLabel value="Telefono 2" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el numero de telefono 2"/> 
+                            <p:outputLabel value="Direccion" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese la direccion"/> 
+
+                            <p:outputLabel value="Fax" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el Fax" />
+
+                            <p:outputLabel value="Email" style="font-weight:bold"/>
+                            <p:inputText value="" a:placeholder="Ingrese el Email"/> 
+
+
+                            <p:outputLabel value="S-Logan" style="font-weight:bold"/>
+                            <p:fileUpload value="" mode="simple" skinSimple="false"/>
+                        </p:panelGrid>
+
+
+                        <p:commandButton value="Guardar" 
+                                         update="formMostrarEmpresa:tablaEmpresas" oncomplete="PF('dialogModificarEmpresa').hide();"/>
+                        <p:commandButton value="Cancelar"  onclick="PF('dialogModificarEmpresa').hide();"/>
+                    </p:dialog>
+                </h:form>
+
+                <h:form id="formEliminarEmpresa">
+
+                    <p:dialog id="dlgEliminarEmpresa" widgetVar="dialogEliminarEmpresa" resizable="false" showEffect="explode" 
+                              hideEffect="explode" modal="true">
+                        <h:outputText value="Desea eliminar este registro?"/>
+                        <p:commandButton value="SI"
+                                         update="formMostrarEmpresa:tablaEmpresas" onclick="PF('dialogEliminarEmpresa').hide();"/>
+                        <p:commandButton value="Cancelar"  onclick="PF('dialogEliminarEmpresa').hide();"/>
+                    </p:dialog>
+                </h:form>
+                <h:form id="formVerDatosCientes"> 
+                    <p:dialog id="dlgDatosEmpresas" widgetVar="dialogDatosEmpresas" resizable="true" showEffect="explode"
+                              hideEffect="explode" modal="true">
+                        <h3 style="text-align: center">Datos Empresa</h3>
+                        <p:panelGrid columns="2" style="margin: 0 auto;">
+
+                            <p:outputLabel style="font-weight:bold" value="Nombre Empresa"/>
+                            <p:outputLabel value="Inversiones Taveras"/>
+
+
+                            <p:outputLabel  style="font-weight:bold" value="Tipo de Empresas"/>
+                            <p:outputLabel value="Privada"/>
+
+                            <p:outputLabel style="font-weight:bold" value="RNC"/>
+                            <p:outputLabel value="1424-415225"/>
+
+
+                            <p:outputLabel  style="font-weight:bold" value="Moneda"/>
+                            <p:outputLabel value="Peso Dominicano"/>  
+
+                            <p:outputLabel  style="font-weight:bold" value="Telefono 1"/>
+                            <p:outputLabel value="Telefono 1"/>
+
+                            <p:outputLabel style="font-weight:bold" value="Telefono 2"/>
+                            <p:outputLabel value="Telefono 2"/>
+
+                            <p:outputLabel style="font-weight:bold" value="Direccion"/>
+                            <p:outputLabel value="Direccion"/>
+
+                            <p:outputLabel style="font-weight:bold" value="Fax"/>
+                            <p:outputLabel value="Fax"/>
+                            <p:outputLabel  value="Email" style="font-weight:bold"/>
+                            <p:outputLabel value="inversionestaveras@invtav.com"/>
+
+                            <p:outputLabel  value="Slogan" style="font-weight:bold"/>
+                            <img src="http://localhost:8080/Inquilinos/faces/views/IMG/logo_Inversiones.png" width="100px"/>
+
+
+
+                        </p:panelGrid>
+
+
+
+                    </p:dialog>
+
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

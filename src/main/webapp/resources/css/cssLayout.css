@@ -1,17 +1,21 @@
 
 #top {
     position: relative;
-    background-color: #036fab;
+    background-color: #ffffff;
     color: white;
     padding: 5px;
     margin: 0px 0px 10px 0px;
 }
 
 #bottom {
+    
     position: relative;
     background-color: #c2dfef;
     padding: 5px;
-    margin: 10px 0px 0px 0px;
+    margin: 10px 15px 0px 240px;
+}
+.mostrarSlogan{ 
+    margin: 0 auto;
 }
 
 #left {
@@ -20,6 +24,7 @@
     padding: 5px;
     width: 210px;
     height: 250px;
+    margin-bottom: 100px;
     
 }
 
@@ -40,7 +45,7 @@
 .left_content {
     background-color: #dddddd;
     padding: 5px;    
-    margin: 0px 100px 0px 240px;
+    margin: 0px 15px 0px 240px;
     
 }
 

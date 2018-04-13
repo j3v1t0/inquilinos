@@ -14,24 +14,49 @@
 
     <h:body>
 
-        <div id="left">
-            <h:form>
-                <p:panelMenu style="width:210px">
-                    <p:submenu label="Cuenta por Cobrar">
-                        <p:menuitem value="Clientes"  icon="ui-icon-person"/>
-                        <p:menuitem value="Agentes Inmobiliario"   icon="ui-icon-transferthick-e-w" />
-                        <p:menuitem value="Solicitud de Arrendamiento"   icon="	ui-icon-script" />
-                    </p:submenu>
-                    <p:submenu label="Configuración">
-                        <p:menuitem value="Empresas"  ajax="false" icon="ui-icon-home"/>
-                        <p:menuitem value="Regionalidad"  ajax="false" icon="ui-icon-flag"/>
-                    </p:submenu>
-                    <p:separator />
-                </p:panelMenu>
-            </h:form>
+        <div id="top">
+            <ui:insert name="top">
+           
+                <h:panelGrid id="mostrarSlogan" columns="12" >
+                         
+                                    <img  src="http://localhost:8080/Inquilinos/faces/views/IMG/logo_Inversiones.png"  width="50px"/>
+                                    <p:outputLabel value="Inversiones Taveras" style="font-weight: bold; font-size: 30px; text-align: center; color: #000000"/>
+                                 
+                    
+                 </h:panelGrid>
+                
+               
+            </ui:insert>
         </div>
-        <div id="content" class="left_content">
-            <ui:insert name="content">Content</ui:insert>
+        <div>
+            <div id="left">
+                <h:form>
+                    <p:panelMenu style="width:210px">
+                        <p:submenu label="Cuenta por Cobrar">
+                            <p:menuitem value="Clientes" outcome="/views/Cliente/Clientes"  icon="ui-icon-person"/>
+                            <p:menuitem value="Agentes Inmobiliario"  outcome="/views/Agentes/Agentes"  icon="ui-icon-transferthick-e-w" />
+                            <p:menuitem value="Solicitud de Arrendamiento"   icon="	ui-icon-script" />
+                        </p:submenu>
+                        <p:submenu label="Configuración">
+                            <p:menuitem value="Empresas"   outcome="/views/Empresas/Empresas"  ajax="false" icon="ui-icon-home"/>
+                            <p:menuitem value="Regionalidad"  ajax="false" icon="ui-icon-flag"/>
+                        </p:submenu>
+                        <p:separator />
+                    </p:panelMenu>
+                </h:form>
+            </div>
+            <div id="content" class="left_content">
+                <ui:insert name="content">
+
+
+                </ui:insert>
+            </div>
+        </div>
+        <div id="bottom">
+            <ui:insert name="bottom">
+
+                <h4 style="text-align: center;">&copy; Inversiones Taveras </h4>
+            </ui:insert>
         </div>
 
     </h:body>

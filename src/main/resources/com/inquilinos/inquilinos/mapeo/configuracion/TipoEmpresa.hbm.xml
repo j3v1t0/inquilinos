@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.inquilinos.inquilinos.model.configuracion.TipoEmpresa" table="inquilinos.tipoempresa">
+        <id column="idtipoempresa" name="idtipoempresa">
+        </id>
+        <property name="tipoempresa"/>
+        <set fetch="select" inverse="true" lazy="true" name="empresa" table="empresa">
+            <key>
+                <column name="idtipoempresa"/>
+            </key>
+            <one-to-many class="com.inquilinos.inquilinos.model.configuracion.Empresas"/>
+        </set>     
+    </class>
+</hibernate-mapping>

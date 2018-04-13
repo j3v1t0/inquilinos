@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.inquilinos.inquilinos.model.configuracion.Moneda" table="inquilinos.moneda">
+        <id column="idmoneda" name="idmoneda">
+        </id>
+        <property name="moneda"/>
+        <property name="simbolo"/>
+        <set fetch="select" inverse="true" lazy="true" name="empresa" table="empresas">
+            <key>
+                <column name="idmoneda"/>
+            </key>
+            <one-to-many class="com.inquilinos.inquilinos.model.configuracion.Empresas"/>
+        </set>  
+    </class>
+</hibernate-mapping>
