@@ -53,7 +53,7 @@ public class TipoEmpresa implements Serializable{
 
     @Override
     public String toString() {
-        return "TipoEmpresa{" + "tipoempresa=" + tipoempresa + '}';
+        return tipoempresa;
     }
     
     

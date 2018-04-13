@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.inquilinos.inquilinos.model.configuracion.Empresas" table="configuracion.empresas">
+        <id column="idempresa" name="idempresa" type="int">
+            <generator class="increment"/>
+        </id>         
+        <property name="rnc"/>
+        <property name="empresa"/>
+        <property name="direccion"/>
+        <many-to-one cascade="save-update" class="com.inquilinos.inquilinos.model.configuracion.TipoEmpresa" column="idtipoempresa" fetch="select" name="tipoempresa">          
+        </many-to-one>  
+        <many-to-one cascade="save-update" class="entidades.Configuracion.Moneda" column="idmoneda" fetch="select" name="moneda">          
+        </many-to-one>
+    </class>
+</hibernate-mapping>
