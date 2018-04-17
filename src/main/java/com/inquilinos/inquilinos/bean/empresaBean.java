@@ -7,10 +7,13 @@ package com.inquilinos.inquilinos.bean;
 
 import com.inquilinos.inquilinos.dao.configuracion.empresaDao;
 import com.inquilinos.inquilinos.imp.configuracion.empresaDaoImp;
+import com.inquilinos.inquilinos.imp.configuracion.tipoempresaDaoImp;
 import com.inquilinos.inquilinos.model.configuracion.Empresas;
+import com.inquilinos.inquilinos.model.configuracion.TipoEmpresa;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.model.SelectItem;
 
 @ManagedBean
 @ViewScoped
@@ -18,6 +21,7 @@ public class empresaBean {
 
     private List<Empresas> listaEmpresas;
     private Empresas empresa;
+
 
     public empresaBean() {
 
@@ -61,4 +65,5 @@ public class empresaBean {
         eDao.deleteEmpresas(empresa);
         empresa = new Empresas();
     }
+   
 }

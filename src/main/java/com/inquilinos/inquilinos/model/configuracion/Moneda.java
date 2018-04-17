@@ -15,7 +15,7 @@ import java.util.Set;
  */
 public class Moneda implements Serializable{
 
-    private long idmoneda;
+    private int idmoneda;
     private String moneda;
     private String simbolo;
     private Set empresa = new HashSet(0);
@@ -23,17 +23,17 @@ public class Moneda implements Serializable{
     public Moneda() {
     }
 
-    public Moneda(long idmoneda, String moneda, String simbolo) {
+    public Moneda(int idmoneda, String moneda, String simbolo) {
         this.idmoneda = idmoneda;
         this.moneda = moneda;
         this.simbolo = simbolo;
     }
 
-    public long getIdmoneda() {
+    public int getIdmoneda() {
         return idmoneda;
     }
 
-    public void setIdmoneda(long idmoneda) {
+    public void setIdmoneda(int idmoneda) {
         this.idmoneda = idmoneda;
     }
 

@@ -8,29 +8,22 @@ package com.inquilinos.inquilinos.bean;
 import com.inquilinos.inquilinos.dao.configuracion.tipoempresaDao;
 import com.inquilinos.inquilinos.imp.configuracion.tipoempresaDaoImp;
 import com.inquilinos.inquilinos.model.configuracion.TipoEmpresa;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.model.SelectItem;
 
 @ManagedBean
 @ViewScoped
-public class tipoempresaBean {
+public class tipoempresaBean implements Serializable {
 
-    private List<TipoEmpresa> listatipoempresa;
+    private List<SelectItem> listatipoempresa;
     private TipoEmpresa tipoempresa;
 
     public tipoempresaBean() {
-
-    }
-
-    public List<TipoEmpresa> getListatipoempresa() {
-        tipoempresaDao teDao = new tipoempresaDaoImp();
-        listatipoempresa = teDao.listarTipoEmpresa();
-        return listatipoempresa;
-    }
-
-    public void setListatipoempresa(List<TipoEmpresa> listatipoempresa) {
-        this.listatipoempresa = listatipoempresa;
+        tipoempresa = new TipoEmpresa();
     }
 
     public TipoEmpresa getTipoempresa() {
@@ -41,8 +34,19 @@ public class tipoempresaBean {
         this.tipoempresa = tipoempresa;
     }
 
-    public void prepararTipoEmpresa() {
-        tipoempresa = new TipoEmpresa();
+    public List<SelectItem> getListatipoempresa() {
+        this.listatipoempresa = new ArrayList<SelectItem>();
+        tipoempresaDao teDao = new tipoempresaDaoImp();
+
+        List<TipoEmpresa> te = teDao.listarTipoEmpresa();
+        listatipoempresa.clear();
+
+        for (TipoEmpresa tiposempresas : te) {
+            SelectItem tipoempresaItem = new SelectItem(tiposempresas.getIdtipoempresa(), tiposempresas.getTipoempresa());
+            this.listatipoempresa.add(tipoempresaItem);
+        }
+
+        return listatipoempresa;
     }
 
 }

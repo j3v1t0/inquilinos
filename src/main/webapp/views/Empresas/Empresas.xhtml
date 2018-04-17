@@ -81,18 +81,19 @@
                             <p:inputText value="#{empresaBean.empresa.empresa}" a:placeholder="Ingrese el nombre"/>
 
                             <p:outputLabel value="Tipo de Empresa" style="font-weight:bold"/>
-                            <p:selectOneMenu value="#{tipoempresaBean.listatipoempresa}">
+                            <p:selectOneMenu id="tipoempresa" value="#{empresaBean.empresa.tipoempresa.idtipoempresa}">
+                                <f:selectItem itemLabel = "Seleccione el Tipo de Empresa"/>
                                 <f:selectItems value="#{tipoempresaBean.listatipoempresa}"/>
                             </p:selectOneMenu>
 
+                            <p:outputLabel value="Moneda" style="font-weight:bold"/>
+                            <p:selectOneMenu id="moneda" value="#{empresaBean.empresa.moneda.idmoneda}">
+                                <f:selectItem itemLabel = "Seleccione la moneda"/>
+                                <f:selectItems value="#{monedaBean.listaMoneda}"/>
+                            </p:selectOneMenu>
 
                             <p:outputLabel value="RNC" style="font-weight:bold"/>
                             <p:inputText value="#{empresaBean.empresa.rnc}" a:placeholder="Ingrese el RNC "/> 
-
-                            <p:outputLabel value="Moneda" style="font-weight:bold"/>
-                            <p:selectOneMenu value="#{monedaBean.listaMoneda}">
-                                <f:selectItems value="#{monedaBean.listaMoneda}"/>
-                            </p:selectOneMenu>
 
                             <p:outputLabel value="Telefono 1" style="font-weight:bold"/>
                             <p:inputText value="#{empresaBean.empresa.telefono1}" a:placeholder="Ingrese el numero de telefono 1"/> 
