@@ -23,7 +23,7 @@ public class tipoempresaBean implements Serializable {
     private TipoEmpresa tipoempresa;
 
     public tipoempresaBean() {
-        tipoempresa = new TipoEmpresa();
+
     }
 
     public TipoEmpresa getTipoempresa() {
@@ -41,11 +41,12 @@ public class tipoempresaBean implements Serializable {
         List<TipoEmpresa> te = teDao.listarTipoEmpresa();
         listatipoempresa.clear();
 
-        for (TipoEmpresa tiposempresas : te) {
-            SelectItem tipoempresaItem = new SelectItem(tiposempresas.getIdtipoempresa(), tiposempresas.getTipoempresa());
-            this.listatipoempresa.add(tipoempresaItem);
-        }
+        for (TipoEmpresa tiposempresa : te) {
 
+            SelectItem tipoempresaItem = new SelectItem(tiposempresa.getIdtipoempresa(), tiposempresa.getTipoempresa());
+            this.listatipoempresa.add(tipoempresaItem);
+
+        }
         return listatipoempresa;
     }
 

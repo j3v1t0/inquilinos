@@ -22,7 +22,7 @@ public class monedaBean {
     private Moneda moneda;
 
     public monedaBean() {
-        moneda = new Moneda();
+        
     }
 
     public Moneda getMoneda() {
@@ -41,9 +41,12 @@ public class monedaBean {
         listaMoneda.clear();
 
         for (Moneda monedas : m) {
-            SelectItem monedaItem = new SelectItem(monedas.getIdmoneda(),  monedas.getMoneda());
+
+            SelectItem monedaItem = new SelectItem(monedas.getIdmoneda().toString(), monedas.getMoneda());
             this.listaMoneda.add(monedaItem);
-        }
+
+        }        
+        
         return listaMoneda;
     }
 

@@ -53,6 +53,7 @@ public class empresaDaoImp implements empresaDao {
         } catch (HibernateException he) {
             tx.rollback();
             manejaException(he);
+            System.out.println(he.getMessage());
             resp = false;
             throw he;
         } finally {

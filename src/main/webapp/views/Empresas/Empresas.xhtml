@@ -86,14 +86,14 @@
                                 <f:selectItems value="#{tipoempresaBean.listatipoempresa}"/>
                             </p:selectOneMenu>
 
+                            <p:outputLabel value="RNC" style="font-weight:bold"/>
+                            <p:inputText value="#{empresaBean.empresa.rnc}" a:placeholder="Ingrese el RNC "/> 
+
                             <p:outputLabel value="Moneda" style="font-weight:bold"/>
                             <p:selectOneMenu id="moneda" value="#{empresaBean.empresa.moneda.idmoneda}">
                                 <f:selectItem itemLabel = "Seleccione la moneda"/>
                                 <f:selectItems value="#{monedaBean.listaMoneda}"/>
                             </p:selectOneMenu>
-
-                            <p:outputLabel value="RNC" style="font-weight:bold"/>
-                            <p:inputText value="#{empresaBean.empresa.rnc}" a:placeholder="Ingrese el RNC "/> 
 
                             <p:outputLabel value="Telefono 1" style="font-weight:bold"/>
                             <p:inputText value="#{empresaBean.empresa.telefono1}" a:placeholder="Ingrese el numero de telefono 1"/> 
@@ -111,8 +111,6 @@
                             <p:outputLabel value="Slogan" style="font-weight:bold"/>
                             <p:inputText value="#{empresaBean.empresa.slogan}" a:placeholder="Slogan de la empresa"/> 
 
-                            <p:outputLabel value="Logo" style="font-weight:bold"/>
-                            <p:fileUpload value="" mode="simple" skinSimple="false"/>
                         </p:panelGrid>
 
                         <p:commandButton value="Guardar" 

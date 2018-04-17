@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.inquilinos.inquilinos.model.configuracion.Moneda" table="configuracion.moneda">
-        <id column="idmoneda" name="idmoneda">
+        <id column="idmoneda" name="idmoneda" type="java.lang.Integer">
         </id>
         <property name="moneda"/>
         <property name="simbolo"/>
