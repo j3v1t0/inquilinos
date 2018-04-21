@@ -23,6 +23,10 @@ public class TipoEmpresa implements Serializable{
     public TipoEmpresa() {
     }
 
+    public TipoEmpresa(String idtipoempresa) {
+        this.idtipoempresa = idtipoempresa;
+    }
+
     public TipoEmpresa(String idtipoempresa, String tipoempresa) {
         this.idtipoempresa = idtipoempresa;
         this.tipoempresa = tipoempresa;

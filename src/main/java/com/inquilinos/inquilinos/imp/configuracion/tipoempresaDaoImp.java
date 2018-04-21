@@ -13,12 +13,13 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
+public class tipoempresaDaoImp implements tipoempresaDao {
 
-public class tipoempresaDaoImp implements tipoempresaDao{
     Session sesion;
     Transaction tx;
-    
+
     @Override
     public List<TipoEmpresa> listarTipoEmpresa() {
         List<TipoEmpresa> lista = null;
@@ -36,6 +37,7 @@ public class tipoempresaDaoImp implements tipoempresaDao{
 
         return lista;
     }
+
     public void iniciarOperacion() throws HibernateException {
 
         sesion = HibernateUtil.getSessionFactory().openSession();
@@ -48,5 +50,5 @@ public class tipoempresaDaoImp implements tipoempresaDao{
         tx.rollback();
         throw new HibernateException("Ocurrio un error en la capa de acceso a datos. ", he);
     }
-    
+
 }

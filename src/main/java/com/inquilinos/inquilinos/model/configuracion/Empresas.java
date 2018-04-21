@@ -42,6 +42,12 @@ public class Empresas implements Serializable{
         this.slogan = slogan;
     }
 
+    public Empresas(String telefono1, String telefono2, String fax) {
+        this.telefono1 = telefono1;
+        this.telefono2 = telefono2;
+        this.fax = fax;
+    }
+
     public long getIdempresa() {
         return idempresa;
     }

@@ -13,15 +13,18 @@
 
             <ui:define name="content">
                 <h2 style="text-align: center;">Empresas</h2>
-
+                <f:view>
+                    <f:metadata>
+                        <f:viewAction action="#{empresaBean.init}" onPostback="false"/>
+                    </f:metadata>
+                </f:view>
 
                 <h:form>
                     <p:panelGrid columns="3" >
 
 
                     </p:panelGrid>
-                    <p:commandButton value="Agregar Empresa" 
-                                     oncomplete="PF('dialogNuevoEmpresa').show();" update=":formNuevoEmpresa"/>
+                    <p:commandButton value="Agregar Empresa" actionListener="#{empresaBean.prepararNuevoEmpresa}" oncomplete="PF('dialogNuevoEmpresa').show();" update=":formNuevoEmpresa"/>
                 </h:form>
                 <h:form id="formMostrarEmpresa">
 
@@ -81,26 +84,26 @@
                             <p:inputText value="#{empresaBean.empresa.empresa}" a:placeholder="Ingrese el nombre"/>
 
                             <p:outputLabel value="Tipo de Empresa" style="font-weight:bold"/>
-                            <p:selectOneMenu id="tipoempresa" value="#{empresaBean.empresa.tipoempresa.idtipoempresa}">
+                            <p:selectOneMenu id="cbxtipoempresa" value="#{empresaBean.tipoempresa}">
                                 <f:selectItem itemLabel = "Seleccione el Tipo de Empresa"/>
                                 <f:selectItems value="#{tipoempresaBean.listatipoempresa}" var="tipoemp" itemLabel="#{tipoemp.tipoempresa}" itemValue="#{tipoemp.idtipoempresa}"/>
                             </p:selectOneMenu>
 
-                            <p:outputLabel value="RNC" style="font-weight:bold"/>
-                            <p:inputText value="#{empresaBean.empresa.rnc}" a:placeholder="Ingrese el RNC "/> 
+                            <p:outputLabel value="RNC"  style="font-weight:bold"/>
+                            <p:inputText id="rncModificado" value="#{empresaBean.empresa.rnc}" a:placeholder="Ingrese el RNC " maxlength="11" /> 
 
                             <p:outputLabel value="Moneda" style="font-weight:bold"/>
-                            <p:selectOneMenu id="moneda" value="#{empresaBean.empresa.moneda.idmoneda}">
+                            <p:selectOneMenu id="cbxmoneda" value="#{empresaBean.moneda}">
                                 <f:selectItem itemLabel = "Seleccione la moneda"/>
-                                <f:selectItems value="#{monedaBean.listaMoneda}" var="mon" itemLabel="#{mon.moneda}" itemValue="#{tipoemp.idmoneda}"/>
+                                <f:selectItems value="#{monedaBean.listaMoneda}" var="mon" itemLabel="#{mon.moneda}" itemValue="#{mon.idmoneda}"/>
                             </p:selectOneMenu>
 
                             <p:outputLabel value="Telefono 1" style="font-weight:bold"/>
-                            <p:inputText value="#{empresaBean.empresa.telefono1}" a:placeholder="Ingrese el numero de telefono 1"/> 
+                            <p:inputText id="emTelefono1" value="#{empresaBean.empresa.telefono1}" a:placeholder="Ingrese el numero de telefono 1"/>
                             <p:outputLabel value="Telefono 2" style="font-weight:bold"/>
-                            <p:inputText value="#{empresaBean.empresa.telefono2}" a:placeholder="Ingrese el numero de telefono 2"/> 
+                            <p:inputText id="emTelefono2" value="#{empresaBean.empresa.telefono2}"  a:placeholder="Ingrese el numero de telefono 2"/> 
                             <p:outputLabel value="Fax" style="font-weight:bold"/>
-                            <p:inputText value="#{empresaBean.empresa.fax}" a:placeholder="Ingrese el Fax"/> 
+                            <p:inputText id="emFax" value="#{empresaBean.empresa.fax}" a:placeholder="Ingrese el Fax"/> 
 
                             <p:outputLabel value="Direccion" style="font-weight:bold"/>
                             <p:inputText value="#{empresaBean.empresa.direccion}" a:placeholder="Ingrese la direccion" />
@@ -114,7 +117,7 @@
                         </p:panelGrid>
 
                         <p:commandButton value="Guardar" 
-                                         update="formMostrarEmpresa:tablaEmpresas" actionListener="#{empresaBean.nuevoEmpresa()}" oncomplete="PF('dialogNuevoEmpresa').hide();"/>
+                                         update="formMostrarEmpresa:tablaEmpresas" actionListener="#{empresaBean.nuevoEmpresa}" oncomplete="PF('dialogNuevoEmpresa').hide();"/>
                         <p:commandButton value="Cancelar"  onclick="PF('dialogNuevoEmpresa').hide();"/>
 
                     </p:dialog>
@@ -220,7 +223,6 @@
                             <p:outputLabel value="inversionestaveras@invtav.com"/>
 
                             <p:outputLabel  value="Slogan" style="font-weight:bold"/>
-                            <img src="http://localhost:8080/Inquilinos/faces/views/IMG/logo_Inversiones.png" width="100px"/>
 
 
 

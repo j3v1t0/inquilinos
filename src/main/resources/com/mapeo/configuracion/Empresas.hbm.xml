@@ -2,14 +2,14 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.inquilinos.inquilinos.model.configuracion.Empresas" table="configuracion.empresas">
-        <id column="idempresa" name="idempresa" type="int">
-            <generator class="increment"/>
+        <id column="idempresa" name="idempresa" >
+            <generator class="identity"/>
         </id>   
         <property name="empresa"/>
-        <many-to-one cascade="save-update" class="com.inquilinos.inquilinos.model.configuracion.TipoEmpresa" column="idtipoempresa" fetch="select" name="tipoempresa">          
+        <many-to-one class="com.inquilinos.inquilinos.model.configuracion.TipoEmpresa" column="idtipoempresa" fetch="select" name="tipoempresa">          
         </many-to-one>        
         <property name="rnc"/>
-        <many-to-one cascade="save-update" class="com.inquilinos.inquilinos.model.configuracion.Moneda" column="idmoneda" fetch="select" name="moneda">          
+        <many-to-one class="com.inquilinos.inquilinos.model.configuracion.Moneda" column="idmoneda" fetch="select" name="moneda">          
         </many-to-one>      
         <property name="telefono1"/>
         <property name="telefono2"/>  

@@ -23,6 +23,10 @@ public class Moneda implements Serializable{
     public Moneda() {
     }
 
+    public Moneda(Integer idmoneda) {
+        this.idmoneda = idmoneda;
+    }
+
     public Moneda(Integer idmoneda, String moneda, String simbolo) {
         this.idmoneda = idmoneda;
         this.moneda = moneda;
